@@ -15,7 +15,7 @@ set :format, :airbrussh
 
 # You can configure the Airbrussh format using :format_options.
 # These are the defaults.
-set :format_options, command_output: true, log_file: "log/capistrano.log", color: :auto, truncate: :auto
+set :format_options, command_output: true, log_file: "log/capistrano.log", color: :true, truncate: :auto
 
 # Default value for :pty is false
 set :pty, true
@@ -25,3 +25,13 @@ set :deploy_user, "uldeploy"
 
 # Default value for keep_releases is 5
 set :keep_releases, 3
+
+namespace :deploy do
+  after "deploy:cleanup"
+    desc "execute script on server"
+    task :update_solr do
+      on roles(:app) do
+        execute :bash, "/tmp/solr-core-update/current/geoportal-core-updater.sh"
+      end
+    end
+  end
