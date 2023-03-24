@@ -29,4 +29,8 @@ echo -e "\n"
 
 sudo /bin/systemctl restart solr
 
+# canary for testing purposes
+echo "successfully deployed $(date --rfc-3339=second)" >> /tmp/solr-core-deploy.log
+
+
 exit 0
