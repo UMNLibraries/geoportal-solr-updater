@@ -27,11 +27,11 @@ set :deploy_user, "uldeploy"
 set :keep_releases, 3
 
 namespace :deploy do
-  after "deploy:cleanup"
-    desc "execute script on server"
-    task :update_solr do
-      on roles(:app) do
-        execute :bash, "/tmp/solr-core-update/current/geoportal-core-updater.sh"
-      end
+  #after "deploy:cleanup"
+  desc "execute script on server"
+  task :update_solr do
+    on roles(:app) do
+      execute :bash, "/tmp/solr-core-update/current/geoportal-core-updater.sh"
     end
   end
+end

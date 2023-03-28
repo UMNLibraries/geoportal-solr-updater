@@ -14,9 +14,6 @@ SOLR_GIT_TAG=$(curl -o- -fsSL "https://api.github.com/repos/geobtaa/geoportal-so
 # set the solr core dir
 SOLR_CORE_DIR="/opt/data/solr-cores/geomg"
 
-# This will need to run as the uldeploy user, so we can restart solr etc right from here.
-sudo /bin/systemctl stop solr
-
 # update the solr core itself
 sudo -u ulapps git -C $SOLR_CORE_DIR checkout develop
 sudo -u ulapps git -C $SOLR_CORE_DIR pull
@@ -28,9 +25,5 @@ sudo -u ulapps git -C $SOLR_CORE_DIR status
 echo -e "\n"
 
 sudo /bin/systemctl restart solr
-
-# canary for testing purposes
-echo "successfully deployed $(date --rfc-3339=second)" >> /tmp/solr-core-deploy.log
-
 
 exit 0
