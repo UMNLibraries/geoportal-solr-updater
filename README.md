@@ -16,6 +16,8 @@ The third step will do the following:
 ### Potential Pitfalls
 
 1. the solr core config must be versioned using a git tag.
-2. If your operating system (e.g., MacOS) doesn't start `ssh-agent` automatically, run `ssh-agent` and then `ssh-add` to add your keys. Consult `ssh-agent(1)` for more information.
+2. If your operating system (e.g., MacOS) doesn't automatically load your ssh keys into an agent, run `ssh-add` to add your keys. Consult [`ssh-add(1)`](https://man.openbsd.org/ssh-add.1) for more information.[^1]
 
 Tested using ruby 3.1.2/capistrano 3.17.1
+
+[^1]: see also: [ArchWiki](https://wiki.archlinux.org/title/SSH_keys#SSH_agents), [Ubuntu](https://help.ubuntu.com/community/SSH/OpenSSH/Keys), [Void](https://docs.voidlinux.org/config/services/user-services.html)
